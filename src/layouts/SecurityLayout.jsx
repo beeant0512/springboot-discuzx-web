@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'dva';
+import { PageLoading } from '@ant-design/pro-layout';
 import { Redirect } from 'umi';
 import { stringify } from 'querystring';
-import PageLoading from '@/components/PageLoading';
 
 class SecurityLayout extends React.Component {
   state = {

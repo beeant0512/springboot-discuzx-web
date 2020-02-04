@@ -6,6 +6,7 @@ export default {
   "fixedHeader": false,
   "autoHideHeader": false,
   "fixSiderbar": false,
+  colorWeak: false,
   "menu": {
     "locale": true
   },

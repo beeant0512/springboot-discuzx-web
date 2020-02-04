@@ -1,4 +1,5 @@
 import { Button, Card, Icon, Steps, Result, Descriptions } from 'antd';
+import { FormattedMessage, formatMessage } from 'umi-plugin-react/locale';
 import React, { Fragment } from 'react';
 import { GridContent } from '@ant-design/pro-layout';
 import styles from './index.less';
@@ -11,7 +12,7 @@ const desc1 = (
         margin: '8px 0 4px',
       }}
     >
-      曲丽丽
+      <FormattedMessage id="resultandsuccess.success.step1-operator" defaultMessage="Qu Lili" />
       <Icon
         style={{
           marginLeft: 8,
@@ -35,7 +36,7 @@ const desc2 = (
         margin: '8px 0 4px',
       }}
     >
-      周毛毛
+      <FormattedMessage id="resultandsuccess.success.step2-operator" defaultMessage="Zhou Maomao" />
       <a href="">
         <Icon
           type="dingding-o"
@@ -44,17 +45,46 @@ const desc2 = (
             marginLeft: 8,
           }}
         />
-        催一下
+        <FormattedMessage id="resultandsuccess.success.step2-extra" defaultMessage="Urge" />
       </a>
     </div>
   </div>
 );
 const content = (
   <>
-    <Descriptions title="项目名称">
-      <Descriptions.Item label="项目 ID">23421</Descriptions.Item>
-      <Descriptions.Item label="负责人">曲丽丽</Descriptions.Item>
-      <Descriptions.Item label="生效时间">2016-12-12 ~ 2017-12-12</Descriptions.Item>
+    <Descriptions
+      title={formatMessage({
+        id: 'resultandsuccess.success.operate-title',
+        defaultMessage: 'Project Name',
+      })}
+    >
+      <Descriptions.Item
+        label={
+          <FormattedMessage
+            id="resultandsuccess.success.operate-id"
+            defaultMessage="Project ID："
+          />
+        }
+      >
+        23421
+      </Descriptions.Item>
+      <Descriptions.Item
+        label={
+          <FormattedMessage id="resultandsuccess.success.principal" defaultMessage="Principal：" />
+        }
+      >
+        <FormattedMessage id="resultandsuccess.success.step1-operator" defaultMessage="Qu Lili" />
+      </Descriptions.Item>
+      <Descriptions.Item
+        label={
+          <FormattedMessage
+            id="resultandsuccess.success.operate-time"
+            defaultMessage="Effective time："
+          />
+        }
+      >
+        2016-12-12 ~ 2017-12-12
+      </Descriptions.Item>
     </Descriptions>
     <br />
     <Steps progressDot current={1}>
@@ -65,7 +95,10 @@ const content = (
               fontSize: 14,
             }}
           >
-            创建项目
+            <FormattedMessage
+              id="resultandsuccess.success.step1-title"
+              defaultMessage="Create project"
+            />
           </span>
         }
         description={desc1}
@@ -77,7 +110,10 @@ const content = (
               fontSize: 14,
             }}
           >
-            部门初审
+            <FormattedMessage
+              id="resultandsuccess.success.step2-title"
+              defaultMessage="Departmental preliminary review"
+            />
           </span>
         }
         description={desc2}
@@ -89,7 +125,10 @@ const content = (
               fontSize: 14,
             }}
           >
-            财务复核
+            <FormattedMessage
+              id="resultandsuccess.success.step3-title"
+              defaultMessage="Financial review"
+            />
           </span>
         }
       />
@@ -100,7 +139,7 @@ const content = (
               fontSize: 14,
             }}
           >
-            完成
+            <FormattedMessage id="resultandsuccess.success.step4-title" defaultMessage="Finish" />
           </span>
         }
       />
@@ -109,9 +148,15 @@ const content = (
 );
 const extra = (
   <Fragment>
-    <Button type="primary">返回列表</Button>
-    <Button>查看项目</Button>
-    <Button>打印</Button>
+    <Button type="primary">
+      <FormattedMessage id="resultandsuccess.success.btn-return" defaultMessage="Back to list" />
+    </Button>
+    <Button>
+      <FormattedMessage id="resultandsuccess.success.btn-project" defaultMessage="View project" />
+    </Button>
+    <Button>
+      <FormattedMessage id="resultandsuccess.success.btn-print" defaultMessage="Print" />
+    </Button>
   </Fragment>
 );
 export default () => (
@@ -119,8 +164,12 @@ export default () => (
     <Card bordered={false}>
       <Result
         status="success"
-        title="提交成功"
-        subTitle="提交结果页用于反馈一系列操作任务的处理结果， 如果仅是简单操作，使用 Message 全局提示反馈即可。 本文字区域可以展示简单的补充说明，如果有类似展示 “单据”的需求，下面这个灰色区域可以呈现比较复杂的内容。"
+        title={formatMessage({
+          id: 'resultandsuccess.success.title',
+        })}
+        subTitle={formatMessage({
+          id: 'resultandsuccess.success.description',
+        })}
         extra={extra}
         style={{
           marginBottom: 16,

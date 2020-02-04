@@ -15,7 +15,7 @@ export default () => (
   <PageHeaderWrapper>
     <Card>
       <Alert
-        message="umi ui 现已发布，欢迎使用 npm run ui 启动体验。"
+        message="umi ui 现已发布，点击右下角 umi 图标即可使用"
         type="success"
         showIcon
         banner
@@ -29,7 +29,7 @@ export default () => (
           基于 block 开发，快速构建标准页面
         </a>
       </Typography.Text>
-      <CodePreview>npx umi block list</CodePreview>
+      <CodePreview> npm run ui</CodePreview>
       <Typography.Text
         strong
         style={{

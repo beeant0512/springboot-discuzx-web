@@ -1,6 +1,7 @@
 import Link from 'umi/link';
 import { Result, Button } from 'antd';
 import React from 'react';
+import { formatMessage } from 'umi-plugin-react/locale';
 
 export default () => (
   <Result
@@ -9,10 +10,18 @@ export default () => (
     style={{
       background: 'none',
     }}
-    subTitle="抱歉，你无权访问该页面。"
+    subTitle={formatMessage({
+      id: 'exceptionand403.description.403',
+      defaultMessage: "Sorry, you don't have access to this page.",
+    })}
     extra={
       <Link to="/">
-        <Button type="primary">返回首页</Button>
+        <Button type="primary">
+          {formatMessage({
+            id: 'exceptionand403.exception.back',
+            defaultMessage: 'Back Home',
+          })}
+        </Button>
       </Link>
     }
   />

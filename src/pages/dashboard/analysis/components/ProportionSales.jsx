@@ -1,4 +1,5 @@
 import { Card, Radio } from 'antd';
+import { FormattedMessage } from 'umi-plugin-react/locale';
 import React from 'react';
 import { Pie } from './Charts';
 import Yuan from '../utils/Yuan';
@@ -15,7 +16,12 @@ const ProportionSales = ({
     loading={loading}
     className={styles.salesCard}
     bordered={false}
-    title="销售额类别占比"
+    title={
+      <FormattedMessage
+        id="dashboardandanalysis.analysis.the-proportion-of-sales"
+        defaultMessage="The Proportion of Sales"
+      />
+    }
     style={{
       height: '100%',
     }}
@@ -24,9 +30,15 @@ const ProportionSales = ({
         {dropdownGroup}
         <div className={styles.salesTypeRadio}>
           <Radio.Group value={salesType} onChange={handleChangeSalesType}>
-            <Radio.Button value="all">全部渠道</Radio.Button>
-            <Radio.Button value="online">线上</Radio.Button>
-            <Radio.Button value="stores">门店</Radio.Button>
+            <Radio.Button value="all">
+              <FormattedMessage id="dashboardandanalysis.channel.all" defaultMessage="ALL" />
+            </Radio.Button>
+            <Radio.Button value="online">
+              <FormattedMessage id="dashboardandanalysis.channel.online" defaultMessage="Online" />
+            </Radio.Button>
+            <Radio.Button value="stores">
+              <FormattedMessage id="dashboardandanalysis.channel.stores" defaultMessage="Stores" />
+            </Radio.Button>
           </Radio.Group>
         </div>
       </div>
@@ -39,11 +51,13 @@ const ProportionSales = ({
           marginBottom: 32,
         }}
       >
-        销售额
+        <FormattedMessage id="dashboardandanalysis.analysis.sales" defaultMessage="Sales" />
       </h4>
       <Pie
         hasLegend
-        subTitle="销售额"
+        subTitle={
+          <FormattedMessage id="dashboardandanalysis.analysis.sales" defaultMessage="Sales" />
+        }
         total={() => <Yuan>{salesPieData.reduce((pre, now) => now.y + pre, 0)}</Yuan>}
         data={salesPieData}
         valueFormat={value => <Yuan>{value}</Yuan>}

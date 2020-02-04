@@ -4,10 +4,12 @@
  * https://github.com/ant-design/ant-design-pro-layout
  */
 import ProLayout, { DefaultFooter, SettingDrawer } from '@ant-design/pro-layout';
+import { formatMessage } from 'umi-plugin-react/locale';
 import React, { useEffect } from 'react';
-import Link from 'umi/link';
+import { Link } from 'umi';
 import { connect } from 'dva';
-import { Icon, Result, Button } from 'antd';
+import { GithubOutlined } from '@ant-design/icons';
+import { Result, Button } from 'antd';
 import Authorized from '@/utils/Authorized';
 import RightContent from '@/components/GlobalHeader/RightContent';
 import { getAuthorityFromRouter } from '@/utils/utils';
@@ -47,7 +49,7 @@ const defaultFooterDom = (
       },
       {
         key: 'github',
-        title: <Icon type="github" />,
+        title: <GithubOutlined />,
         href: 'https://github.com/ant-design/ant-design-pro',
         blankTarget: true,
       },
@@ -105,6 +107,7 @@ const BasicLayout = props => {
     <>
       <ProLayout
         logo={logo}
+        formatMessage={formatMessage}
         menuHeaderRender={(logoDom, titleDom) => (
           <Link to="/">
             {logoDom}
@@ -113,7 +116,7 @@ const BasicLayout = props => {
         )}
         onCollapse={handleMenuCollapse}
         menuItemRender={(menuItemProps, defaultDom) => {
-          if (menuItemProps.isUrl || menuItemProps.children) {
+          if (menuItemProps.isUrl || menuItemProps.children || !menuItemProps.path) {
             return defaultDom;
           }
 
@@ -136,7 +139,7 @@ const BasicLayout = props => {
         }}
         footerRender={footerRender}
         menuDataRender={menuDataRender}
-        rightContentRender={rightProps => <RightContent {...rightProps} />}
+        rightContentRender={() => <RightContent />}
         {...props}
         {...settings}
       >

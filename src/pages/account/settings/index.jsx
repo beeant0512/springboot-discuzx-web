@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FormattedMessage } from 'umi-plugin-react/locale';
 import { GridContent } from '@ant-design/pro-layout';
 import { Menu } from 'antd';
 import { connect } from 'dva';
@@ -19,10 +20,27 @@ class Settings extends Component {
   constructor(props) {
     super(props);
     const menuMap = {
-      base: '基本设置',
-      security: '安全设置',
-      binding: '账号绑定',
-      notification: '新消息通知',
+      base: (
+        <FormattedMessage id="accountandsettings.menuMap.basic" defaultMessage="Basic Settings" />
+      ),
+      security: (
+        <FormattedMessage
+          id="accountandsettings.menuMap.security"
+          defaultMessage="Security Settings"
+        />
+      ),
+      binding: (
+        <FormattedMessage
+          id="accountandsettings.menuMap.binding"
+          defaultMessage="Account Binding"
+        />
+      ),
+      notification: (
+        <FormattedMessage
+          id="accountandsettings.menuMap.notification"
+          defaultMessage="New Message Notification"
+        />
+      ),
     };
     this.state = {
       mode: 'inline',
